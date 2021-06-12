@@ -3,7 +3,10 @@ package com.HRRestServices.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.HRRestServices.entity.Employee;
@@ -15,8 +18,16 @@ public class EmployeesController {
 
 	@Autowired
 	private EmployeesService service;
-	@RequestMapping("/employees")
+	@RequestMapping(value = "/employees", 
+					method=RequestMethod.GET,
+					produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Employee> getEmployees() {
 		return this.service.getEmployees();
+	}
+	@RequestMapping(value = "/employees/{id}", 
+			method=RequestMethod.GET,
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public Employee getEmployeeById(@PathVariable int id) {
+		return this.service.getEmployeeById(id);
 	}
 }

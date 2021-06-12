@@ -15,10 +15,15 @@ public class EmployeesService {
 @Autowired	
 private EmployeeRepository repo; 
 	public List<Employee> getEmployees() {
-		List<Employee> posts = new ArrayList<Employee>();
+		List<Employee> Employees = new ArrayList<Employee>();
 		for(Employee employee : repo.findAll()) {
-			posts.add(employee);
+			Employees.add(employee);
 		}
-		return posts;
+		return Employees;
+	}
+	public Employee getEmployeeById(Integer employeeId) {
+		Employee employee = new Employee();
+		employee = repo.findById(employeeId).get();	
+		return employee;
 	}
 }
