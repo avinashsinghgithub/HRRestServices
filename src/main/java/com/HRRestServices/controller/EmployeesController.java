@@ -31,9 +31,9 @@ public class EmployeesController {
 	@RequestMapping(value = "/employees/range", 
 			method=RequestMethod.GET,
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<Employee> getEmployeeByFromRange(@RequestParam Integer s,@RequestParam Integer r) {
+	public List<Employee> getEmployeeByFromRange(@RequestParam Integer start,@RequestParam Integer range) {
 		System.out.println("getEmployeeByFromRange method called in controller");
-		return this.service.getEmployeeByFromRange(s,r);
+		return this.service.getEmployeeByFromRange(start,range);
 	}
 	@RequestMapping(value = "/employees/{id}", 
 			method=RequestMethod.GET,
